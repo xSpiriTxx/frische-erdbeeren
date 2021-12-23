@@ -138,7 +138,7 @@ class TableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
         print("PREPARE")
         if let viewController = segue.destination as? ViewController {
-            viewController.entry = self.currentPerson!
+            viewController.entry = self.currentPerson ?? Entry()
         }
     }
     
