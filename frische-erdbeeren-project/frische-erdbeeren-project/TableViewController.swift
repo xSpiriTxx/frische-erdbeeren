@@ -91,6 +91,8 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         currentPerson = model.persons[indexPath.row]
         print("selected row \(indexPath)")
+        
+        //performSegue(withIdentifier: "detail", sender: self)
     }
     /*
     // Override to support conditional editing of the table view.

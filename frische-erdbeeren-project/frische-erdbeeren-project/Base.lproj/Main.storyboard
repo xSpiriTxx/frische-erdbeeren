@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Racelist-->
         <scene sceneID="CFu-tZ-AFN">
             <objects>
                 <tableViewController id="vUM-SC-w4r" customClass="TableViewController" customModule="frische_erdbeeren_project" customModuleProvider="target" sceneMemberID="viewController">
@@ -41,7 +41,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="r3A-PA-tL2" kind="show" id="Yld-7j-hP6"/>
+                                    <segue destination="r3A-PA-tL2" kind="show" identifier="detail" id="Yld-7j-hP6"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -50,13 +50,13 @@
                             <outlet property="delegate" destination="vUM-SC-w4r" id="ex5-uP-m5l"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="Hif-J3-f3Z"/>
+                    <navigationItem key="navigationItem" title="Racelist" id="Hif-J3-f3Z"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yjo-ak-9Wf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="786" y="-154"/>
         </scene>
-        <!--View Controller-->
+        <!--Race-->
         <scene sceneID="g2J-iT-OBf">
             <objects>
                 <viewController id="r3A-PA-tL2" customClass="ViewController" customModule="frische_erdbeeren_project" customModuleProvider="target" sceneMemberID="viewController">
@@ -78,7 +78,7 @@
                             <constraint firstItem="PfO-CE-3Ck" firstAttribute="centerY" secondItem="6Xh-LZ-zpG" secondAttribute="centerY" id="wYg-UT-bTh"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ThX-yU-1QF"/>
+                    <navigationItem key="navigationItem" title="Race" id="ThX-yU-1QF"/>
                     <connections>
                         <outlet property="raceNameLabel" destination="PfO-CE-3Ck" id="nkU-1q-t0p"/>
                     </connections>
