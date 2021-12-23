@@ -9,38 +9,89 @@ import UIKit
 
 class TableViewController: UITableViewController {
 
+    var queue = DispatchQueue(label: "download")
+    //let path = "https://ergast.com/api/f1/2021/22/results.json"
+    let path = "https://ergast.com/api/f1/2021/22.json"
+    var model = RaceModel()
+    var currentPerson: Entry?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        if let url = URL(string: path){
+            download(url: url)
+        }
+        
+        
+    }
+    func download(url: URL){
+        queue.async {
+            let tempModel = self.asyncDownload(url: url)
+            DispatchQueue.main.async {
+                self.model = tempModel
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    func asyncDownload(url:URL) -> RaceModel{
+        var model = RaceModel()
+        if let data = try? Data(contentsOf: url){
+            print("Downloaded: \(data)")
+            if let json = try? JSONSerialization.jsonObject(with: data, options: []){
+                print("json: \(json)")
+                if let array = json as? [[String : Any]] {
+                    print("array is: \(array)")
+                    model = parseArray(array: array)
+                }else{
+                    print("No array")
+                }
+            }
+        }else{
+            print("Error downloading data!")
+        }
+        return model
+    }
+    
+    func parseArray(array: [[String: Any]]) -> RaceModel{
+        let model = RaceModel()
+        for el in array {
+            let entry = Entry()
+            entry.season = el["season"] as! String
+            model.persons.append(entry)
+        }
+        return model
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return model.persons.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "person", for: indexPath)
 
+        let person = model.persons[indexPath.row]
         // Configure the cell...
+        cell.textLabel?.text = person.raceName
+        cell.detailTextLabel?.text = person.season
 
         return cell
     }
-    */
-
+    
+    //https://stackoverflow.com/questions/55091420/not-able-to-parse-the-json-data-from-f1-url
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        currentPerson = model.persons[indexPath.row]
+        print("selected row \(indexPath)")
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -76,14 +127,18 @@ class TableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        print("PREPARE")
+        if let viewController = segue.destination as? ViewController {
+            viewController.entry = self.currentPerson!
+        }
     }
-    */
+    
 
 }
