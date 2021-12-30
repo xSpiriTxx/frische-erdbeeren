@@ -7,25 +7,20 @@
 
 import Foundation
 
-class Entry {
-    var season = "";
-    var round = "";
-    var raceName = "";
-    var date = "";
-    var time = "";
-    var circuit = "";
-    var locality = "";
-    var country = "";
-    
-}
 
 public class RaceModel {
-    var persons = [Entry()]
+    var data: F1Data!
     
-    
+    func parseData(data: Data){
+        do {
+            self.data = try JSONDecoder().decode(F1Data.self, from: data)
+        } catch {
+          print(error)
+        }
+    }
 }
 
-/*
+
  struct F1Data: Codable {
      let mrData: MRData
 
@@ -39,35 +34,109 @@ public class RaceModel {
      let series: String
      let url: String
      let limit, offset, total: String
-     let standingsTable: StandingsTable
+     let raceTable: RaceTable
 
      enum CodingKeys: String, CodingKey {
          case xmlns, series, url, limit, offset, total
-         case standingsTable = "StandingsTable"
+         case raceTable = "RaceTable"
      }
  }
 
- struct StandingsTable: Codable {
-     let season: String
-     let standingsLists: [StandingsList]
+ struct RaceTable: Codable {
+     let races: [Race]
 
      enum CodingKeys: String, CodingKey {
-         case season
-         case standingsLists = "StandingsLists"
+         case races = "Races"
      }
  }
 
- struct StandingsList: Codable {
-     let season, round: String
-     let driverStandings: [DriverStanding]
 
-     enum CodingKeys: String, CodingKey {
-         case season, round
-         case driverStandings = "DriverStandings"
-     }
- }
+struct Race: Codable {
+    let season, round, url, raceName, date: String
+    let circuits: Circuit
+    let results: [Result]
+    
+    enum CodingKeys: String, CodingKey {
+        case season, round, url, raceName, date
+        case circuits = "Circuit"
+        case results = "Results"
+    }
+}
 
- struct DriverStanding: Codable {
+struct Result: Codable {
+    let number, position, positionText: String
+    let points, grid, laps, status: String
+    let driver: Driver
+    let constructor: Constructor
+    let time: Time?
+    let fastestLap: FastestLap?
+    
+    enum CodingKeys: String, CodingKey {
+        case number, position, positionText, points, grid, laps, status
+        case driver = "Driver"
+        case constructor = "Constructor"
+        case time = "Time"
+        case fastestLap = "FastestLap"
+    }
+}
+
+struct Time: Codable {
+    let millis: String
+    let time: String
+    
+    enum CodingKeys: String, CodingKey {
+        case millis
+        case time
+    }
+}
+
+struct FastestLap: Codable {
+    let rank, lap: String
+    let time: FastestTime
+    let averageSpeed: AverageSpeed
+    
+    enum CodingKeys: String, CodingKey {
+        case rank, lap
+        case time = "Time"
+        case averageSpeed = "AverageSpeed"
+    }
+}
+
+struct AverageSpeed: Codable {
+    let units, speed: String
+    
+    enum CodingKeys: String, CodingKey {
+        case units, speed
+    }
+}
+
+struct FastestTime: Codable {
+    let time: String
+    
+    enum CodingKeys: String, CodingKey {
+        case time = "time"
+    }
+}
+
+struct Circuit: Codable {
+    let circuitId, url, circuitName:String
+    let location: Location
+    
+    enum CodingKeys: String, CodingKey{
+        case circuitId, url, circuitName
+        case location = "Location"
+    }
+}
+
+struct Location: Codable {
+    let lat, long, locality, country: String
+    
+    enum CodingKeys: String, CodingKey{
+        case lat, long, locality, country
+    }
+}
+
+ /*struct DriverStanding: Codable {
      let position, positionText, points, wins: String
      let driver: Driver
      let constructors: [Constructor]
@@ -77,27 +146,30 @@ public class RaceModel {
          case driver = "Driver"
          case constructors = "Constructors"
      }
- }
+ }*/
 
  struct Constructor: Codable {
      let constructorId: String
      let url: String
      let name: String
      let nationality: String
+     
+     enum CodingKeys: String, CodingKey {
+         case constructorId, url, name, nationality
+     }
  }
 
  struct Driver: Codable {
      let driverId: String
      let url: String
+     //let permanentNumber: String
+     //let code: String
      let givenName, familyName, dateOfBirth, nationality: String
+    
+     enum CodingKeys: String, CodingKey {
+         case driverId, url, givenName, familyName, dateOfBirth, nationality
+     }
  }
 
- do {
-   let f1Data = try JSONDecoder().decode(F1Data.self, from: jsonData)
-
-   let season = f1Data.mrData.standingsTable.season
-   let firstDriver = f1Data.mrData.standingsTable.standingsLists[0].driverStandings[0].driver.driverId
- } catch {
-   print(error)
- }
- */
+ 
+ 

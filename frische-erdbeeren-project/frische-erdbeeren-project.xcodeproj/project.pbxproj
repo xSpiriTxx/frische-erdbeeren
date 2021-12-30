@@ -15,6 +15,8 @@
 		BF3252B127748DCF00F69F78 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3252B027748DCF00F69F78 /* Model.swift */; };
 		BF3252B327748F9F00F69F78 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3252B227748F9F00F69F78 /* TableViewController.swift */; };
 		BF3252B527749D7900F69F78 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3252B427749D7900F69F78 /* ViewController.swift */; };
+		E269E802277DB77B00254CBF /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E269E801277DB77B00254CBF /* StartViewController.swift */; };
+		E269E804277DBE6900254CBF /* F1.svg.png in Resources */ = {isa = PBXBuildFile; fileRef = E269E803277DBE6800254CBF /* F1.svg.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		BF3252B027748DCF00F69F78 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		BF3252B227748F9F00F69F78 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		BF3252B427749D7900F69F78 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E269E801277DB77B00254CBF /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		E269E803277DBE6800254CBF /* F1.svg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = F1.svg.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,10 +69,12 @@
 				BF3252A227748DAA00F69F78 /* Main.storyboard */,
 				BF3252B227748F9F00F69F78 /* TableViewController.swift */,
 				BF3252B427749D7900F69F78 /* ViewController.swift */,
+				E269E803277DBE6800254CBF /* F1.svg.png */,
 				BF3252A527748DAB00F69F78 /* Assets.xcassets */,
 				BF3252A727748DAB00F69F78 /* LaunchScreen.storyboard */,
 				BF3252AA27748DAB00F69F78 /* Info.plist */,
 				BF3252B027748DCF00F69F78 /* Model.swift */,
+				E269E801277DB77B00254CBF /* StartViewController.swift */,
 			);
 			path = "frische-erdbeeren-project";
 			sourceTree = "<group>";
@@ -133,6 +139,7 @@
 			files = (
 				BF3252A927748DAB00F69F78 /* LaunchScreen.storyboard in Resources */,
 				BF3252A627748DAB00F69F78 /* Assets.xcassets in Resources */,
+				E269E804277DBE6900254CBF /* F1.svg.png in Resources */,
 				BF3252A427748DAA00F69F78 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,6 +156,7 @@
 				BF32529F27748DAA00F69F78 /* SceneDelegate.swift in Sources */,
 				BF3252B327748F9F00F69F78 /* TableViewController.swift in Sources */,
 				BF3252B127748DCF00F69F78 /* Model.swift in Sources */,
+				E269E802277DB77B00254CBF /* StartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
