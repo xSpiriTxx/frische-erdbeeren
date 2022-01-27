@@ -15,7 +15,8 @@ class StartViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         super.viewDidLoad()
         picker.dataSource = self
         picker.delegate = self
-        picker.setValue(UIColor.white, forKey: "textColor")
+        //picker.setValue(UIColor.white, forKey: "textColor")
+        picker.selectRow(1, inComponent: 0, animated: true)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
