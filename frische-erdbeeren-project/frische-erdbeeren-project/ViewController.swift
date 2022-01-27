@@ -32,6 +32,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tableView.dataSource = self
         tableView.delegate = self
+        
     }
     
     
@@ -42,8 +43,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let driver = result.driver
         let timeOrStatus = result.time?.time ?? result.status
         
-        cell.textLabel?.text = "[\(indexPath.row+1)] \(driver.givenName) \(driver.familyName) - \(result.constructor.name)"
-        cell.detailTextLabel?.text = "\(timeOrStatus) | Points: \(result.points) "
+        cell.textLabel?.text = "[\(indexPath.row+1)] \(driver.givenName) \(driver.familyName)  -  \(result.constructor.name)"
+        cell.detailTextLabel?.text = "\(timeOrStatus)  |  Points: \(result.points) "
         
         cell.textLabel?.font = UIFont.systemFont(ofSize: 18.0)
         cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 16.0)
