@@ -38,32 +38,13 @@ class TableViewController: UITableViewController {
         let model = RaceModel()
         if let data = try? Data(contentsOf: url){
             print("Downloaded: \(data)")
-            /*if let json = try? JSONSerialization.jsonObject(with: data, options: []){
-                print("json: \(json)")
-                if let array = json as? [[String : Any]] {
-                    print("array is: \(array)")
-                    model = parseArray(array: array)
-                }else{
-                    print("No array")
-                }
-                
-            }*/
             model.parseData(data: data)
         }else{
             print("Error downloading data!")
         }
         return model
     }
-    
-    /*func parseArray(array: [[String: Any]]) -> RaceModel{
-        let model = RaceModel()
-        for el in array {
-            var entry: Race!
-            entry.season = el["season"] as! String
-            model.persons.append(entry)
-        }
-        return model
-    }*/
+
 
     // MARK: - Table view data source
 

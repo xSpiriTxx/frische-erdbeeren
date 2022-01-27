@@ -9,14 +9,13 @@ import UIKit
 
 class StartViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
-    let years:[String] = ["2021","2020","2019","2018","2017","2016","2015"]
+    let years:[String] = ["2022","2021","2020","2019","2018","2017","2016","2015","2014","2013","2012","2011","2010"]
     @IBOutlet weak var picker: UIPickerView!
     override func viewDidLoad() {
         super.viewDidLoad()
         picker.dataSource = self
         picker.delegate = self
         picker.setValue(UIColor.white, forKey: "textColor")
-        // Do any additional setup after loading the view.
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

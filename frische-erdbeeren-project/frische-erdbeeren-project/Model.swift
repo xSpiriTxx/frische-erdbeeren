@@ -136,18 +136,6 @@ struct Location: Codable {
     }
 }
 
- /*struct DriverStanding: Codable {
-     let position, positionText, points, wins: String
-     let driver: Driver
-     let constructors: [Constructor]
-
-     enum CodingKeys: String, CodingKey {
-         case position, positionText, points, wins
-         case driver = "Driver"
-         case constructors = "Constructors"
-     }
- }*/
-
  struct Constructor: Codable {
      let constructorId: String
      let url: String
@@ -162,8 +150,6 @@ struct Location: Codable {
  struct Driver: Codable {
      let driverId: String
      let url: String
-     //let permanentNumber: String
-     //let code: String
      let givenName, familyName, dateOfBirth, nationality: String
     
      enum CodingKeys: String, CodingKey {
