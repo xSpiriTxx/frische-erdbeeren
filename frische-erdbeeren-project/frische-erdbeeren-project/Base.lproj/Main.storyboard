@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2hy-NH-ryd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2hy-NH-ryd">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -66,13 +66,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PfO-CE-3Ck">
-                                <rect key="frame" x="186" y="98" width="42" height="21"/>
+                                <rect key="frame" x="186" y="98" width="42" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Uhn-ZR-lca"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="vgk-dV-8wg">
+                                <rect key="frame" x="0.0" y="156" width="414" height="207"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="z7a-ik-QRH">
-                                <rect key="frame" x="0.0" y="139" width="414" height="757"/>
+                                <rect key="frame" x="0.0" y="371" width="414" height="525"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                 <prototypes>
@@ -112,19 +119,20 @@
                             <constraint firstItem="PfO-CE-3Ck" firstAttribute="top" secondItem="Zp2-xz-XXQ" secondAttribute="top" constant="10" id="rb9-Km-gNS"/>
                             <constraint firstItem="z7a-ik-QRH" firstAttribute="leading" secondItem="6Xh-LZ-zpG" secondAttribute="leading" id="sgt-eg-K5O"/>
                             <constraint firstItem="Zp2-xz-XXQ" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="PfO-CE-3Ck" secondAttribute="trailing" symbolic="YES" id="tYY-qY-Iyg"/>
-                            <constraint firstItem="z7a-ik-QRH" firstAttribute="top" secondItem="PfO-CE-3Ck" secondAttribute="bottom" constant="20" id="v5Y-0b-weO"/>
+                            <constraint firstItem="z7a-ik-QRH" firstAttribute="top" secondItem="PfO-CE-3Ck" secondAttribute="bottom" constant="223" id="v5Y-0b-weO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Race" id="ThX-yU-1QF"/>
                     <connections>
                         <outlet property="headTitle" destination="ThX-yU-1QF" id="33R-J8-zo1"/>
+                        <outlet property="mapView" destination="vgk-dV-8wg" id="evL-xw-jDJ"/>
                         <outlet property="raceNameLabel" destination="PfO-CE-3Ck" id="nkU-1q-t0p"/>
                         <outlet property="tableView" destination="z7a-ik-QRH" id="jcX-du-r4t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="44b-O3-cAL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1696" y="-133"/>
+            <point key="canvasLocation" x="1695.6521739130435" y="-133.25892857142856"/>
         </scene>
         <!--Start View Controller-->
         <scene sceneID="W5a-Mj-Np8">
